@@ -2,41 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Traditional South Indian Tailoring Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Brand Colors - Traditional South Indian Palette */
+    --background: 42 100% 97%; /* Ivory #FFF8F0 */
+    --foreground: 0 0% 18%; /* Charcoal #2F2F2F */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 42 100% 97%;
+    --card-foreground: 0 0% 18%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 42 100% 97%;
+    --popover-foreground: 0 0% 18%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 168 80% 20%; /* Teal Green #0B5A4A */
+    --primary-foreground: 42 100% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 42 50% 90%;
+    --secondary-foreground: 0 0% 18%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 42 30% 92%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 19 65% 48%; /* Burnt Saffron #C66B2E */
+    --accent-foreground: 42 100% 97%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 42 100% 97%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 42 30% 85%;
+    --input: 42 30% 85%;
+    --ring: 168 80% 20%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Traditional Design Elements */
+    --gold-thread: 45 90% 60%;
+    --silk-sheen: 42 100% 98%;
+    --traditional-border: 19 65% 48%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(168 60% 30%));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(25 70% 55%));
+    --gradient-elegant: linear-gradient(180deg, hsl(var(--background)), hsl(42 50% 95%));
+
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.15);
+    --shadow-soft: 0 4px 20px -8px hsl(var(--accent) / 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +117,77 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
   }
+}
+
+@layer components {
+  /* Typography Components */
+  .heading-primary {
+    @apply font-display text-4xl md:text-6xl font-bold tracking-tight;
+  }
+  
+  .heading-secondary {
+    @apply font-display text-2xl md:text-4xl font-semibold tracking-tight;
+  }
+  
+  .heading-tertiary {
+    @apply font-display text-xl md:text-2xl font-medium;
+  }
+
+  /* Interactive Elements */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:opacity-90 px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:opacity-90 px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-whatsapp {
+    @apply bg-green-500 text-white hover:bg-green-600 px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2;
+  }
+
+  /* Card Components */
+  .card-elegant {
+    @apply bg-card border border-border rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .card-featured {
+    @apply bg-gradient-to-br from-card to-secondary/30 border border-border rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+
+  /* Animation Classes */
+  .fade-in-up {
+    @apply animate-[fadeInUp_0.6s_ease-out_forwards];
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-2;
+  }
+  
+  .pulse-soft {
+    @apply animate-[pulseSoft_2s_ease-in-out_infinite];
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
 }
