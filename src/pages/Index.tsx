@@ -56,6 +56,11 @@ const Index = () => {
     }
   ];
 
+  const handleWhatsApp = () => {
+    const message = "Hi! I saw your website and I'm interested in your tailoring services.";
+    window.open(`https://wa.me/+919876543210?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -83,10 +88,7 @@ const Index = () => {
             </NavLink>
             <Button 
               className="btn-whatsapp"
-              onClick={() => {
-                const message = "Hi! I saw your website and I'm interested in your tailoring services.";
-                window.open(`https://wa.me/+919876543210?text=${encodeURIComponent(message)}`, '_blank');
-              }}
+              onClick={handleWhatsApp}
             >
               WhatsApp Us
             </Button>
