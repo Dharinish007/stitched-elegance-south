@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  wishlistItems WishlistItem[]
+  auditLogs     AuditLog[]
+
+  @@map("users")
+}
+
+model Design {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  tags        String[]
+  imageUrl    String
+  cloudinaryId String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  wishlistItems WishlistItem[]
+  auditLogs     AuditLog[]
+
+  @@map("designs")
+}
+
+model WishlistItem {
+  id       String @id @default(cuid())
+  userId   String
+  designId String
+  addedAt  DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  design Design @relation(fields: [designId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, designId])
+  @@map("wishlist_items")
+}
+
+model AuditLog {
+  id        String     @id @default(cuid())
+  action    ActionType
+  userId    String
+  designId  String?
+  details   Json?
+  timestamp DateTime   @default(now())
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  design Design? @relation(fields: [designId], references: [id], onDelete: SetNull)
+
+  @@map("audit_logs")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum ActionType {
+  DESIGN_CREATED
+  DESIGN_UPDATED
+  DESIGN_DELETED
+  USER_REGISTERED
+  USER_LOGIN
+  WISHLIST_ADDED
+  WISHLIST_REMOVED
+}

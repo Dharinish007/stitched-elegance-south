@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: tailoring-portfolio-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build && npx prisma generate && npx prisma migrate deploy
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tailoring-portfolio-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: "1d"
+      - key: ADMIN_EMAIL
+        value: admin@yourdomain.com
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: ADMIN_NAME
+        value: "Portfolio Admin"
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: "https://yourdomain.com,https://www.yourdomain.com"
+      - key: RATE_LIMIT_WINDOW_MS
+        value: "900000"
+      - key: RATE_LIMIT_MAX_REQUESTS
+        value: "100"
+      - key: MAX_FILE_SIZE
+        value: "5242880"
+      - key: ALLOWED_MIME_TYPES
+        value: "image/jpeg,image/jpg,image/png,image/webp"
+
+databases:
+  - name: tailoring-portfolio-db
+    databaseName: tailoring_portfolio
+    plan: free
