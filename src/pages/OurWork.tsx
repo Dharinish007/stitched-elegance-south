@@ -16,7 +16,7 @@ const OurWork = () => {
   const [loading, setLoading] = useState(true);
   const [selectedWork, setSelectedWork] = useState<any>(null);
 
-  const filters = ["All", "Blouse", "Bridal", "Lehenga", "Gown", "Embroidery", "Alterations"];
+  const filters = ["All", "Blouses", "Embroidery", "Gowns", "Suits"];
 
   useEffect(() => {
     fetchWorks();
@@ -292,8 +292,8 @@ const OurWork = () => {
                     <Button 
                       className="btn-whatsapp flex-1"
                       onClick={() => {
-                        const message = `Hi! I'm interested in getting a ${selectedWork.title} similar to what I saw on your website.`;
-                        window.open(`https://wa.me/+919876543210?text=${encodeURIComponent(message)}`, '_blank');
+                        const message = `Hi Sri Tailor! I'm interested in getting a ${selectedWork.title} similar to what I saw on your website.`;
+                        window.open(`https://wa.me/+919750692529?text=${encodeURIComponent(message)}`, '_blank');
                       }}
                     >
                       Order Similar

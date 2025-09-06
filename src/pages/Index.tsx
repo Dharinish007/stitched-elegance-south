@@ -14,23 +14,23 @@ const Index = () => {
   const services = [
     {
       icon: <Scissors className="h-8 w-8 text-accent" />,
-      title: "Blouse Stitching",
+      title: "Blouses",
       description: "Perfect fitting blouses with traditional craftsmanship"
-    },
-    {
-      icon: <Crown className="h-8 w-8 text-accent" />,
-      title: "Bridal Wear",
-      description: "Exquisite wedding attire for your special day"
-    },
-    {
-      icon: <Heart className="h-8 w-8 text-accent" />,
-      title: "Alterations",
-      description: "Professional alterations to enhance your fit"
     },
     {
       icon: <Sparkles className="h-8 w-8 text-accent" />,
       title: "Embroidery",
       description: "Intricate handwork and traditional embellishments"
+    },
+    {
+      icon: <Crown className="h-8 w-8 text-accent" />,
+      title: "Gowns",
+      description: "Elegant gowns for special occasions"
+    },
+    {
+      icon: <Heart className="h-8 w-8 text-accent" />,
+      title: "Suits",
+      description: "Traditional and modern suits tailored to perfection"
     }
   ];
 
@@ -57,8 +57,8 @@ const Index = () => {
   ];
 
   const handleWhatsApp = () => {
-    const message = "Hi! I saw your website and I'm interested in your tailoring services.";
-    window.open(`https://wa.me/+919876543210?text=${encodeURIComponent(message)}`, '_blank');
+    const message = "Hi Sri Tailor, I'd like to know about your designs";
+    window.open(`https://wa.me/+919750692529?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
@@ -71,13 +71,13 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="heading-primary mb-6 fade-in-up">
-            Elegant Stitches
+            Sri Tailor – Where Elegance Meets Every Stitch
           </h1>
           <p className="text-xl md:text-2xl mb-4 font-display italic fade-in-up">
-            Tailoring for women with care
+            Crafting Beauty for Every Woman
           </p>
           <p className="text-lg mb-8 opacity-90 fade-in-up">
-            Handcrafted fits, local service — Chhatrapati near Palani
+            Expert tailoring services at Nalvaladi Complex, Chatrappatti, Dindigul
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
             <NavLink to="/work">
@@ -102,7 +102,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="heading-secondary mb-4">Our Services</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Specializing in traditional South Indian women's attire with modern precision
+              Specializing in women's tailoring with elegant craftsmanship
             </p>
           </div>
           
